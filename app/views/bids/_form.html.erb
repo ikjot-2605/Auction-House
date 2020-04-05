@@ -1,0 +1,55 @@
+<%= form_with(model: bid, local: true) do |form| %>
+  <% if bid.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bid.errors.count, "error") %> prohibited this bid from being saved:</h2>
+
+      <ul>
+        <% bid.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div style="width:400px; margin:0 auto;", class="form">
+  <div class="field1" >
+  <%= form.label :user_email %>
+  <%= form.text_field :user_email, :value => current_user.email, :readonly=>true, :class=>"field"   %>
+  </div>
+
+  <div class="field1">
+    <%= form.label :bid_value %>
+    <%= form.text_field :bid_value, :class=>"field"  %>
+  </div>
+  
+  <div class="field1h" style="visibility: hidden">
+    <%= form.label :product_id %>
+    <%= form.text_field :product_id ,:value => @product.id, :readonly => true%>
+  </div>
+  
+  <div class="field1h" style="visibility: hidden">
+    <%= form.label :product_name %>
+    <%= form.text_field :product_name ,:value => @product.name, :readonly => true%>
+  </div>  
+
+  <div class="field1h" style="visibility: hidden">
+  <%= form.label :deadline %>
+  <%= form.date_select :product_deadline,:selected => @product.deadline  %>
+  </div>
+
+  
+
+  <%
+  params = {
+    :product_id => product.id
+  }
+  
+  url = "http://localhost:3000/bids/new?#{params.to_query}"
+  
+  
+  %>
+
+  <div class="field1">
+    <%= form.submit "Place your bid"%>
+  </div>
+  </div>
+<% end %>

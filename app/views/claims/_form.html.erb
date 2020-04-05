@@ -1,0 +1,41 @@
+<%= form_with(model: claim, local: true) do |form| %>
+  <% if claim.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(claim.errors.count, "error") %> prohibited this claim from being saved:</h2>
+
+      <ul>
+        <% claim.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div style="width:400px; margin:0 auto;", class="form">
+  <div class="field1">
+    <%= form.label :product_id %>
+    <%= form.text_field :c_product_id, :value=>@bid.product_id, :readonly=>true, :class=>"field" %>
+  </div>
+
+  <div class="field1">
+    <%= form.label :product_name %>
+    <%= form.text_field :c_product_name, :value=>@bid.product_name, :readonly=>true, :class=>"field"  %>
+  </div>
+
+  <div class="field1">
+    <%= form.label :bid_for_product %>
+    <%= form.text_field :c_bid_forproduct, :value=>@bid.bid_value, :readonly=>true, :class=>"field"  %>
+  </div>
+
+  <div class="field1">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, :value=>current_user.id, :readonly=>true, :class=>"field"  %>
+  </div>
+
+  
+
+  <div class="actions">
+    <%= form.submit "Claim Item Now" %>
+  </div>
+  </div>
+
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  c_product_id: 1
+  c_product_name: MyString
+  c_bid_forproduct: MyString
+  integer: MyString
+
+two:
+  c_product_id: 1
+  c_product_name: MyString
+  c_bid_forproduct: MyString
+  integer: MyString

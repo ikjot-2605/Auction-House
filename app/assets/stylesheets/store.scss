@@ -1,0 +1,83 @@
+
+        
+        .image {
+            padding: 1em;
+            margin-right: 1em;
+            margin-bottom: 1em;
+            box-shadow: 0.176em 0.176em 0.354em 0px rgba(0,0,0,0.75);
+            padding-bottom: 10 em;
+            float: left; 
+            }
+        .price {
+        font-size: 1.414em;
+        padding-bottom: 20 px; 
+        
+        }
+        .listing{
+            padding: 1em;
+        margin: 0;
+        border-bottom: solid thin #ddd;
+        padding-bottom: 10 em;  
+          
+        }
+        .catalog{
+    
+            border-top: solid 0.250em;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        padding-bottom: 10 em; 
+        }
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+          }
+          .alert {
+            padding: 20px;
+            background-color: 	#FAEBD7;
+            color: #303F5D;
+            margin-bottom: 15px;
+          }
+          
+          /* The close button */
+          .closebtn {
+            margin-left: 15px;
+            color: #303F5D;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+          }
+          
+          /* When moving the mouse over the close button */
+          .closebtn:hover {
+            color: black;
+          }
+
+          #header {
+            background-color: #F1F1F1;
+            text-align: center;
+            padding: 20px;
+          }
+
+          .bid_link{
+            padding-top: 20px;
+          
+          }
+          .desc{
+            font-size: 1.414em;
+            word-wrap: break-word;
+            max-width:80ch;
+          }
+          .listing{
+            padding-bottom: 100px;
+
+          }

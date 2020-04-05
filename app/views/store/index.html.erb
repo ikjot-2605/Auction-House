@@ -1,0 +1,80 @@
+<% if notice %>
+<aside id="notice"><%= notice %></aside>
+<% end %>
+<h1 id="header">Items For Auction</h1>
+<ul class="catalog">
+
+<%once=0%>
+<% @products.each do |product| %>
+    
+    <%if Product.where(claimed: true).count==Product.count&&once==0%>
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        Sorry, no products available for bidding right now. If you want to put up a product for auction, <%= link_to "Click Here", new_product_path, :class => 'navbar-link'  %> 
+        <%once=1%>
+    </div>
+    <%end%>
+    <%flag=0%>
+    <% @bids.each do |bid| %>
+       
+        <%
+            params = {
+                :bid_id => bid.id
+            }
+        %>
+        
+           
+        <%if (product.deadline-Date.today)>0&&current_user.email==bid.user_email&&bid.product_name==product.name&&bid.bid_value==Bid.where(product_id: product.id).maximum("bid_value")&&flag==0&&!(product.claimed)&&product.starting_bid<=bid.bid_value%>    
+        
+        <%flag=1%>
+
+        <div class="alert">
+            
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            
+            Congratulations, you are the highest bidder for <%=bid.product_name%>. Click here to  <a href="/claims/new?<%= params.to_query %>">Claim Now</a>
+        
+        </div>
+     
+        <a href="/claims/new?<%= params.to_query %>">Claim Now</a>
+        
+        
+        
+        
+        
+        <%break%>
+     
+        <%end%>
+        
+        
+
+<%end%>
+<%if (product.deadline-Date.today)>0&&!(product.claimed)%>
+<li class="listing">
+<%= image_tag product.image , class:"image"%>
+<hr>
+<div class="info">
+<h2 class="name"><%= product.name %></h2>
+<p class="desc">
+<%= truncate(product.description,length: 140) %>
+</p>
+<div class="price">
+Minimum bid : 
+<%= number_to_currency(product.starting_bid)%>
+</div>
+<%
+params = {
+  :product_id => product.id
+}
+
+%>
+<div class="bid_link">
+<a href="/bids/new?<%= params.to_query %>">Bid Now</a>
+
+</div>
+</div>
+</li>
+<%end%>
+<% end %>
+
+</ul>

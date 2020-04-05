@@ -1,0 +1,46 @@
+<% if notice %>
+<aside id="notice"><%= notice %></aside>
+<% end %>
+<h1 id ="header">Products</h1>
+<table>
+<tfoot>
+<tr>
+<td colspan="3">
+<%= link_to 'New product', new_product_path %>
+</td>
+</tr>
+</tfoot>
+<tbody>
+
+<% @products.each do |product| %>
+    
+<%if product.product_user_id==current_user.id%>
+    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+<td class="image__">
+<%= image_tag product.image  , class:"image" %>
+</td>
+<td class="description">
+<h1><%= product.name %></h1>
+<p>
+<%= truncate(strip_tags(product.description),
+length: 80) %>
+</p>
+<p><%if product.claimed%><%@user=User.find(product.cuser_id)%>Your item has been claimed by <%=@user.email%><%end%></p>
+</td>
+<td class="actions">
+<ul>
+<li><%= link_to 'Show', product %></li>
+<li><%= link_to 'Edit', edit_product_path(product) %></li>
+<li>
+<%= link_to 'Destroy',
+product,
+method: :delete,
+data: { confirm: 'Are you sure?' } %>
+</li>
+</ul>
+</td>
+</tr>
+<% end %>
+<% end %>
+</tbody>
+</table>

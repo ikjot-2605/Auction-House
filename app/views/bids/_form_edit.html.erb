@@ -1,0 +1,32 @@
+<%= form_with(model: bid, local: true) do |form| %>
+    <% if bid.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(bid.errors.count, "error") %> prohibited this bid from being saved:</h2>
+  
+        <ul>
+          <% bid.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <div class="field">
+      <%= form.label :user_email %>
+      <%= form.text_field :user_email %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :bid_value %>
+      <%= form.text_field :bid_value %>
+    </div>
+    
+      
+  
+     
+    
+  
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+    <%end%>

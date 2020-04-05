@@ -24,7 +24,7 @@
         %>
         
            
-        <%if (product.deadline-Date.today)>0&&current_user.email==bid.user_email&&bid.product_name==product.name&&bid.bid_value==Bid.where(product_id: product.id).maximum("bid_value")&&flag==0&&!(product.claimed)&&product.starting_bid<=bid.bid_value%>    
+        <%if (product.deadline-Date.today)<0&&current_user.email==bid.user_email&&bid.product_name==product.name&&bid.bid_value==Bid.where(product_id: product.id).maximum("bid_value")&&flag==0&&!(product.claimed)&&product.starting_bid<=bid.bid_value%>    
         
         <%flag=1%>
 

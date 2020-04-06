@@ -1,25 +1,25 @@
 <p id="notice"><%= notice %></p>
 <h1 id="header">Claim Successful!</h1>
 <div class="show">
-<p class="list_info">
-  <strong>Product ID : </strong>
-  <%= @claim.c_product_id %>
-</p>
+  <p class="list_info">
+    <strong>Product ID : </strong>
+    <%= @claim.c_product_id %>
+  </p>
 
-<p class="list_info">
-  <strong>Product Name : </strong>
-  <%= @claim.c_product_name %>
-</p>
+  <p class="list_info">
+    <strong>Product Name : </strong>
+    <%= @claim.c_product_name %>
+  </p>
 
-<p class="list_info">
-  <strong>Bid Value : </strong>
-  <%= @claim.c_bid_forproduct %>
-</p>
+  <p class="list_info">
+    <strong>Bid Value : </strong>
+    <%= @claim.c_bid_forproduct %>
+  </p>
 
-<p class="list_info">
-  <strong>User ID : </strong>
-  <%= @claim.user_id %>
-</p>
+  <p class="list_info">
+    <strong>User ID : </strong>
+    <%= @claim.user_id %>
+  </p>
 
 
 <%= link_to 'Back', claims_path %>

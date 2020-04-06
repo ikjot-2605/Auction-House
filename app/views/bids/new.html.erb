@@ -1,35 +1,36 @@
 
 <p><h1 id="header">YOU ARE BIDDING FOR</h1></p>
 <div class="card">
-<p>
-  <%= image_tag @product.image , class: "image_display"%>
-</p>
+  <p>
+    <%= image_tag @product.image , class: "image_display"%>
+  </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+  <p>
+    <strong>Name:</strong>
+    <%= @product.name %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= truncate(@product.description, :length => 80) %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= truncate(@product.description, :length => 80) %>
+  </p>
 
-<p>
-  <strong>Starting bid:</strong>
-  <%= number_to_currency(@product.starting_bid) %>
-</p>
+  <p>
+    <strong>Starting bid:</strong>
+    <%= number_to_currency(@product.starting_bid) %>
+  </p>
 
-<p>
-  <strong>Deadline:</strong>
-  <%= @product.deadline %>
-</p>
+  <p>
+    <strong>Deadline:</strong>
+    <%= @product.deadline %>
+  </p>
 
-<p>
-  <strong>Contact:</strong>
-  <%= @product.contact %>
-</p>
+  <p>
+    <strong>Contact:</strong>
+    <%= @product.contact %>
+  </p>
 </div>
+
 <%= render 'form', bid: @bid, product: @product %> 
 
 <%= link_to 'Back', bids_path %>

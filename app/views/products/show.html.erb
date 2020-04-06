@@ -1,41 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-
 <table class="table">
-<tbody>
-<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-<td class="image__">
-<%= image_tag @product.image  , class:"image" %>
-</td>
-<td class="description">
-<h1><%= @product.name %></h1>
-<p>
-<%= @product.description%>
-</p>
-<p>
-Starting Bid : 
-<%= @product.starting_bid%>
-</p>
-<p>
-Deadline : 
-<%= @product.deadline%>
-</p>
-<p><%if @product.claimed%><%@user=User.find(@product.cuser_id)%>Your item has been claimed by <%=@user.email%><%end%></p>
-</td>
-<td class="actions">
-<ul>
-<li><%= link_to 'Edit', edit_product_path(@product) %></li>
-<li>
-<%= link_to 'Destroy',
-@product,
-method: :delete,
-data: { confirm: 'Are you sure?' } %>
-</li>
-</ul>
-</td>
-</tr>
+    <tbody>
+    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+        <td class="image__">
+            <%= image_tag @product.image  , class:"image" %>
+        </td>
+        <td class="description">
+            <h1><%= @product.name %></h1>
+            <p>
+                <%= @product.description%>
+            </p>
+            <p>
+                Starting Bid : 
+                <%= @product.starting_bid%>
+            </p>
+            <p>
+                Deadline : 
+                <%= @product.deadline%>
+            </p>
+            <p>
+                <%if @product.claimed%><%@user=User.find(@product.cuser_id)%>
+                    Your item has been claimed by <%=@user.email%>
+                <%end%>
+            </p>
+        </td>
+        <td class="actions">
+            <ul>
+                <li><%= link_to 'Edit', edit_product_path(@product) %></li>
+                <li>
+                    <%= link_to 'Destroy',
+                        @product,
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    </tbody>
 </table>
-</tbody>
 
 
 

@@ -2,48 +2,46 @@ require "product"
 class BidsController < ApplicationController
   before_action :set_bid, only: [:show, :edit, :update, :destroy]
 
-  # GET /bids
-  # GET /bids.json
-  def istime
-    
-
-  end
-  
+  #index function:
+  #gets a list of all the bids placed
+  #conditions of bid display are put in erb in the view {eg. only bids placed by curr user will be displayed, etc.}
+  # Requests: GET
   def index
     @bids = Bid.all
-    
   end
 
-  # GET /bids/1
-  # GET /bids/1.json
+  #show function:
+  #functionality : to view the bid details after it is placed
   def show
     @bid = Bid.find(params[:id]) 
     @product=Product.find(@bid.product_id)
-    
   end
 
-  # GET /bids/new
+  #creates a new bid for given product on sale
+  #again, conditions put in the view as erb
   def new  
     @product =  Product.find(params[:product_id])    
-    
     @bid = Bid.new 
   end 
 
   def product_name
     @product=product.name
   end  
+
   def product_id
     @product=product.id
   end
-  # GET /bids/1/edit
+
+  
+  #editing a bid after it is placed
   def edit
+  
   end
 
-  # POST /bids
-  # POST /bids.json
+  #called when submit bid button pushed
+  #details stored in model
   def create
     @bid = Bid.new(bid_params)
-    
     respond_to do |format|
       if @bid.save
         format.html { redirect_to @bid, notice: 'Bid was successfully created.' }
@@ -55,8 +53,8 @@ class BidsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /bids/1
-  # PATCH/PUT /bids/1.json
+  #called when update bid button pushed
+  #details updated in model
   def update
     respond_to do |format|
       if @bid.update(bid_params)
@@ -69,8 +67,8 @@ class BidsController < ApplicationController
     end
   end
 
-  # DELETE /bids/1
-  # DELETE /bids/1.json
+  #called when delete bid button pushed
+  #details removed from model
   def destroy
     @bid.destroy
     respond_to do |format|

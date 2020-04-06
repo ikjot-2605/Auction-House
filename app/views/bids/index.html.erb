@@ -9,28 +9,29 @@
       <th>Bid</th>
       <th>Product</th>
       <th>Deadline</th>
-      
       <th colspan="5"></th>
     </tr>
   </thead>
 
+<%#displaying all the currently relevant bids%>
+  
   <tbody>
     <% @bids.each do |bid| %>
-    <%if bid.user_email==current_user.email && Product.exists?(id: bid.product_id) %>
-      <tr class="bid_row">
-        <td><%= bid.user_email %></td>
-        <td><%= bid.bid_value %></td>
-        <td><%=bid.product_name%></td>
-        <td><%=bid.product_deadline%></td>
-       
-        <td><%= link_to 'Show Bid', bid %></td>
-        
-        <td><%= link_to 'Delete Bid', bid, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <%end%>
-    <%if (!Product.exists?(id: bid.product_id))||(Product.where(claimed:true).exists?(id: bid.product_id)) %>
-      <%bid.delete%>
-    <%end%>  
+      <%#the below line checks if the product exists, then display bids of that product BY CURRENT USER%>
+      <%if bid.user_email==current_user.email && Product.exists?(id: bid.product_id) %>
+        <tr class="bid_row">
+          <td><%= bid.user_email %></td>
+          <td><%= bid.bid_value %></td>
+          <td><%=bid.product_name%></td>
+          <td><%=bid.product_deadline%></td>
+          <td><%= link_to 'Show Bid', bid %></td>
+          <td><%= link_to 'Delete Bid', bid, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <%end%>
+      <%#otherwise delete that bid if product doesn't exist or it has been claimed%>
+      <%if (!Product.exists?(id: bid.product_id))||(Product.where(claimed:true).exists?(id: bid.product_id)) %>
+        <%bid.delete%>
+      <%end%>  
     <% end %>
   </tbody>
 </table>

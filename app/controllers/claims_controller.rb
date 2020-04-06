@@ -1,22 +1,23 @@
 class ClaimsController < ApplicationController
   before_action :set_claim, only: [:show, :edit, :update, :destroy]
 
-  # GET /claims
-  # GET /claims.json
+  #index function:
+  #gets a list of all the products claimed
+  #conditions of claim display are put in erb in the view {eg. only claims by curr user will be displayed, etc.}
+  # Requests: GET
   def index
     @claims = Claim.all
   end
 
-  # GET /claims/1
-  # GET /claims/1.json
+  #show function:
+  #functionality : to view the claim details after it is claimed
   def show
   end
 
-  # GET /claims/new
+  #creates new claim as and when the highest bidder decides to claim item 
   def new
     @claim = Claim.new
     @user=current_user
-
     @bid =  Bid.find(params[:bid_id])
   end
 
@@ -24,8 +25,10 @@ class ClaimsController < ApplicationController
   def edit
   end
 
-  # POST /claims
-  # POST /claims.json
+  #called when submit claim button pushed
+  #details stored in model
+  #once claimed, product's claimed value becomes true and is not displayed to new buyers anymore
+  #upon claiming, user_id is stored in model
   def create
     @claim = Claim.new(claim_params)
     @user=User.find(@claim.user_id)
@@ -45,8 +48,8 @@ class ClaimsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /claims/1
-  # PATCH/PUT /claims/1.json
+  #called when update claim button pushed
+  #details stored in model
   def update
     respond_to do |format|
       if @claim.update(claim_params)
@@ -59,8 +62,8 @@ class ClaimsController < ApplicationController
     end
   end
 
-  # DELETE /claims/1
-  # DELETE /claims/1.json
+  #pretty much useless, but available if needed
+  #not used, because it doesn't make sense to delete a claim after the seller is assured that transaction is done
   def destroy
     @claim.destroy
     respond_to do |format|

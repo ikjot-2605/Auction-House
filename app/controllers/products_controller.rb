@@ -1,31 +1,28 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
-  # GET /products
-  # GET /products.json
+  # displays list of products put up by current user
   def index
-    
     @products = Product.all
-    
   end
+  #not required
   def details
     @product = Product.find(params[:id])
   end
-  # GET /products/1
-  # GET /products/1.json
+  #used to view a particular product_ details
   def show
     
   end
 
   # GET /products/new
+  #called to create new product and user uploading product is stored
   def new
-    
     @product = Product.new
     @user=current_user
-  
   end
 
   # GET /products/1/edit
+  #to edit product details
   def edit
     @user=User.find(@product.product_user_id)
   end
@@ -63,10 +60,6 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    
-    
-    
-    
     @product.delete  
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }

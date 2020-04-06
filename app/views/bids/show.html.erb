@@ -1,23 +1,25 @@
+<%#basic page to display Bid Details on creation or review%>
 <p id="notice"><%= notice %></p>
 <h1 id="header">Bid Successful!</h1>
 <div class="show">
-<p class="list_info">
-  <strong>User email : </strong>
-  <%= @bid.user_email %>
-</p>
+  <p class="list_info">
+    <strong>User email : </strong>
+    <%= @bid.user_email %>
+  </p>
 
-<p class="list_info">
-  <strong>Bid value : </strong>
-  <%= @bid.bid_value %>
-</p>
+  <p class="list_info">
+    <strong>Bid value : </strong>
+    <%= @bid.bid_value %>
+  </p>
 
-<p class="list_info">
-  <strong>Product ID : </strong>
-  <%= @bid.product_id %>
-</p>
-<p class="list_info">
-  <strong>Product Name : </strong>
-  <%= @bid.product_name %>
-</p>
+  <p class="list_info">
+    <strong>Product ID : </strong>
+    <%= @bid.product_id %>
+  </p>
+  <p class="list_info">
+    <strong>Product Name : </strong>
+    <%= @bid.product_name %>
+  </p>
+</div>  
 <%= link_to 'Edit', edit_bid_path(@bid) %> |
 <%= link_to 'Back', bids_path %>

@@ -86,6 +86,6 @@ References used:
 2) https://guides.rubyonrails.org/ for help with small features and functions
 3) https://www.w3schools.com/ for help with the frontend part
 
-Side Note : This is my first time creating any sort of web application, hope it's good enough to get an interview.
+
 Thanks.
 

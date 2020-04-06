@@ -28,6 +28,7 @@ to `false` in your webpacker config file (config/webpacker.yml).
 
 yarn check v1.22.4
 info Visit https://yarnpkg.com/en/docs/cli/check for documentation about this command.
+
 8) To overcome this, Please run `yarn install --check-files` in the terminal.
   It should show the following
   
@@ -41,7 +42,11 @@ warning " > webpack-dev-server@3.10.3" has unmet peer dependency "webpack@^4.0.0
 warning "webpack-dev-server > webpack-dev-middleware@3.7.2" has unmet peer dependency "webpack@^4.0.0".
 [4/4] Building fresh packages...
 Done in 17.04s.
+
+
 9) Once this is done,run rake db:migrate once again, now it should work perfectly.
+
+
 10) Now installation is complete, please run rails s and redirect yourself to http://localhost:3000/ and the login page should now be infront of you. Please sign-up as user and enjoy the site :)
 
 
